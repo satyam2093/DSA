@@ -122,11 +122,11 @@ public class DoublyLinkedList {
         }
         if (position == 1) {
             head = head.next;
-            head.next.prev = null;
+            head.prev = null;
             return;
         }
         Node temp = head;
-        for (int i = 1; i < position - 1 && temp.next != null; i++) {
+        for (int i = 1; i < position  && temp.next != null; i++) {
             temp = temp.next;
         }
 
@@ -134,15 +134,7 @@ public class DoublyLinkedList {
             System.out.println("Positon out of range");
             return;
         }
-        int data = temp.next.data;
-
-
-       //case 2 and case 3 for middle and last element
-       //below is another method for case 2 and case 3 which we can use to delete data at position 
-        // temp.next = temp.next.next;
-        // if (temp.next != null) {
-            // temp.next.prev = temp;
-        // }
+        int data = temp.data;
 
         if (temp.next != null) {
             temp.next.prev = temp.prev;
@@ -195,8 +187,26 @@ public class DoublyLinkedList {
         dll.display();
         dll.deleteFromPosition(5);
         dll.display();
-        dll.deleteFromPosition(5);
+        dll.deleteFromPosition(4);
         dll.display();
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
