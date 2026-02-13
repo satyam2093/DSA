@@ -88,6 +88,62 @@ public class CircularLinkedList {
         temp.next = newNode;
     }
 
+    // Delete from beginning
+    public void deleteFromBegin() {
+        if (head == null) {
+            System.out.println("List is empty ");
+        }
+        if (head.next == head) {
+            head = null;
+        } else {
+            Node temp = head;
+            while (temp.next != head) {
+                temp = temp.next;
+            }
+            head = head.next;
+            temp.next = head;
+        }
+
+    }
+
+    public void deleteFromEnd() {
+        if (head == null) {
+            System.out.println("List is empty ");
+        }
+        if (head.next == head) {
+            head = null;
+        } else {
+            Node temp = head;
+            while (temp.next.next != head) {
+                temp = temp.next;
+            }
+            temp.next = head;
+        }
+    }
+
+    public void deleteFromPosition(int position){
+        if(position<=0){
+            System.out.println("Invalid position");
+            return;
+        }
+        if(head==null){
+            System.out.println("List is empty ");
+        }
+        if(position==1){
+            deleteFromBegin();
+            return;
+        }
+        Node temp=head;
+        for(int i=1;i<position-1 && temp.next!=head;i++){
+            temp=temp.next;
+        }
+        if(temp.next==head){
+            System.out.println("Invalid position");
+            return;
+        }
+        temp.next=temp.next.next;
+    }
+
     // Display List
     public void display() {
         if (head == null) {
@@ -118,6 +174,9 @@ public class CircularLinkedList {
 
         cll.insertAtPosition(5, 2);
 
+        cll.display();
+
+        cll.deleteFromBegin();
         cll.display();
     }
 }
