@@ -26,7 +26,7 @@ public class ShowDataFromTail{
         temp.next = newNode;
     }
 
-    // 🔥 Method to get node from tail
+    // Method to get node from tail
     public int getNodeFromTail(int positionFromTail) {
         if (head == null) {
             throw new RuntimeException("List is empty");
