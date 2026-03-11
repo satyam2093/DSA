@@ -3,7 +3,7 @@ public class LinearSearch {
     int[] arr;
     int index;
 
-    public LinearSearch(int capacity){
+    LinearSearch(int capacity){
         this.size=capacity;
         this.index=0;
         this.arr=new int[capacity];
