@@ -26,6 +26,56 @@ class BST{
         }
         return root;
     }
+
+    //Searching 
+    boolean Search(Node root, int key ){
+        if(root==null){
+            return false;
+        }
+        if(root.data== key ) return true;
+        if(key < root.data) return Search(root.left,key);
+        return Search(root.right,key );
+
+    }
+
+    // Find Minimum 
+    Node findMin(Node root){
+        while(root.left!=null){
+
+            root=root.left;
+           
+        }
+         return root;
+    }
+
+    //Deletion in BST
+    Node delete(Node root, int key ){
+        if (root==null){
+            return null;
+
+        }
+        if(key<root.data){
+            root.left=delete(root.left,key);
+
+        }else if (key>root.data){
+            root.right=delete(root.right,key );
+        }else{
+            if(root.left==null&& root.right==null){
+                return null;
+
+            }else if(root.left==null){
+                return root.right;
+            }else if (root.right==null){
+                return root.left;
+            }else{
+                Node successor=findMin(root.right);
+                root.data=successor.data;
+                root.right=delete(root.right, successor.data);
+            }
+            
+        }
+        return root;
+    }
     //Inorder Traversal
     void Inorder(Node root){
         if(root!=null){
@@ -70,6 +120,10 @@ class BST{
         tree.Preorder(tree.root);
           System.out.println();
         tree.Postorder(tree.root);
+        System.out.println();
+        tree.root=tree.delete(tree.root,99);
+        System.out.println();
+        tree.Preorder(tree.root);
 
 }
 }
