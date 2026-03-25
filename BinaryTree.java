@@ -52,6 +52,66 @@ class BinaryTree {
         }
     }
 
+    // deletion in binary tree 
+    void delete(int value){
+        if (root==null ){
+            return;
+        }
+        Queue <Node> q= new LinkedList<>();
+        q.add(root);
+        Node KeyNode= null, temp=null;
+        while(!q.isEmpty()){
+           temp=q.poll();
+           if(temp.data==value){
+             KeyNode=temp;
+           }
+           if(temp.left !=null){
+            q.add(temp.left);
+
+             
+           }
+           if(temp.right!=null){
+            q.add(temp.right);
+
+           }
+
+
+        }
+        if(KeyNode!=null){
+            int x=temp.data;
+            deleteDeepest(temp);
+            KeyNode.data=x;
+        }
+    }
+
+    void deleteDeepest(Node delNode){
+        Queue <Node> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            Node temp=q.poll();
+            if(temp==delNode){
+                temp=null;
+                return;
+            }
+            if(temp.right!=null){
+                if(temp.right==delNode){
+                    temp.right=null;
+                    return;
+                }else{
+                    q.add(temp.right);
+                }
+            }
+            if(temp.left!=null){
+                if(temp.left==delNode){
+                    temp.left=null;
+                    return;
+                }else{
+                    q.add(temp.left);
+                }
+            }
+        }
+    }
+
     // Inorder Traversal
     public void inorder(Node node) {
         if (node == null) {
@@ -83,6 +143,21 @@ class BinaryTree {
         postorder(node.left);
         postorder(node.right);
         System.out.print(node.data + " ");
+    }
+
+    //Level Order of  Traversal 
+    void levelOrder(){
+        if(root==null){
+            return;
+        }
+        Queue <Node> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            Node temp = q.poll();
+            System.out.print(temp.data + " ");
+            if(temp.left!=null)q.add(temp.left);
+            if(temp.right!=null)q.add(temp.right);
+        }
     }
 
     public void insertintoBinaryTree(int data) {
@@ -120,5 +195,12 @@ class BinaryTree {
 
         System.out.println("\nPostorder Traversal:");
         tree.displayPostorder();
+        tree.delete(5);
+         System.out.println("Inorder Traversal:");
+        tree.levelOrder();
+        System.out.println("Inorder Traversal:");
+
+
+        tree.displayInorder();
     }
 }
