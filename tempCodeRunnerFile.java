@@ -1,0 +1,1 @@
+ if (index == size - 1) {
