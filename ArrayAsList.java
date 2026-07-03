@@ -12,7 +12,7 @@ public class ArrayAsList {
 
     // Insert at end
     public void insertAtEnd(int value) {
-        if (index == size - 1) {
+        if (index == size ) {
             System.err.println("Array is full");
 
         } else {
@@ -22,7 +22,7 @@ public class ArrayAsList {
 
     // Insert at begin
     public void insertAtBeginning(int value) {
-        if (index == size - 1) {
+        if (index == size ) {
             System.out.println("Array is full");
 
         } else {
